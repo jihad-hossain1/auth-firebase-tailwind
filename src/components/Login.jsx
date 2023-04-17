@@ -4,7 +4,7 @@ import { AuthContexts } from "../Provider/AuthPorvider";
 // import AuthPorvider, { AuthContexts } from "../Provider/AuthPorvider";
 
 const Login = () => {
-  const { singIn } = useContext(AuthContexts);
+  const { singIn, singWithGoogle } = useContext(AuthContexts);
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -17,6 +17,16 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         form.reset();
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  const handleGoolgeSingin = () => {
+    singWithGoogle()
+      .then((result) => {
+        const loggedUser = result.user;
         console.log(loggedUser);
       })
       .catch((error) => {
@@ -64,6 +74,15 @@ const Login = () => {
               <button className="btn btn-primary">Login</button>
             </div>
           </form>
+          <div className="text-center">
+            <button
+              onClick={handleGoolgeSingin}
+              className="btn-outline border rounded-md px-4
+            py-2 bg-blue-100 text-gray-500 font-semibold "
+            >
+              Log-In With Google
+            </button>
+          </div>
           <Link to="/register">
             <button className="btn btn-link">
               new to Auth-Master ? register please
