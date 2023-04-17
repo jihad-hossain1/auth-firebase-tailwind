@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import { AuthContexts } from "../Provider/AuthPorvider";
 // import AuthPorvider, { AuthContexts } from "../Provider/AuthPorvider";
 
-
 const Login = () => {
-  const {singIn} = useContext(AuthContexts)
+  const { singIn } = useContext(AuthContexts);
   const handleLogin = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -15,14 +14,14 @@ const Login = () => {
     console.log(email, password);
 
     singIn(email, password)
-    .then(result =>{
-      const loggedUser = result.user;
-      console.log(loggedUser);
-    })
-    .catch(error=>{
-      console.log(error);
-    })
-
+      .then((result) => {
+        const loggedUser = result.user;
+        form.reset();
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
   return (
     <div className="hero min-h-screen bg-base-200">
