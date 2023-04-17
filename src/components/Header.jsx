@@ -28,6 +28,12 @@ const Header = () => {
         </Link>
         <Link
           className="btn btn-ghost normal-case text-xl btn-sm"
+          to="/profile"
+        >
+          Profile
+        </Link>
+        <Link
+          className="btn btn-ghost normal-case text-xl btn-sm"
           to="/register"
         >
           Register
